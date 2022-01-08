@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Apple MacBook Air with Apple M1 chip",
+    "category": "laptop",
+    "summary": "Product summary",
+    "description": "Product decription",
+    "image_file": "product-image-url",
+    "price": 958.05
+  },
+  {
+    "name": "Lenovo (15.6 Inch HD+) Notebook",
+    "category": "laptop",
+    "summary": "Product summary",
+    "description": "Product decription",
+    "image_file": "product-image-url",
+    "price": 399.0
+  },
+  {
+    "name": "Lenovo IdeaPad 3i Laptop",
+    "category": "laptop",
+    "summary": "Product summary",
+    "description": "Product decription",
+    "image_file": "product-image-url",
+    "price": 379.0
+  }
+]
