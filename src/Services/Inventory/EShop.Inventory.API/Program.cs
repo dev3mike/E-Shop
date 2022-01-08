@@ -1,3 +1,5 @@
+using EShop.Inventory.API.Data.Seeds;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
