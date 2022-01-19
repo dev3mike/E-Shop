@@ -1,29 +1,27 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace EShop.Inventory.API.Entities
+namespace EShop.Inventory.API.Dto
 {
-    public class Product : BaseEntity
+    public class ProductDto
     {
-        [BsonElement("name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [BsonElement("category")]
         [JsonProperty("category")]
         public string Category { get; set; }
 
-        [BsonElement("summary")]
+        [JsonProperty("summary")]
         public string Summary { get; set; }
 
-        [BsonElement("description")]
+        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [BsonElement("image_file")]
         [JsonProperty("image_file")]
         public string Image { get; set; }
 
-        [BsonElement("price")]
+        [JsonProperty("price")]
         public decimal Price { get; set; }
     }
 }

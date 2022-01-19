@@ -1,5 +1,6 @@
 ﻿using EShop.Inventory.API.Data;
 using EShop.Inventory.API.Entities;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace EShop.Inventory.API.Repositories
@@ -17,6 +18,10 @@ namespace EShop.Inventory.API.Repositories
         {
             if(string.IsNullOrEmpty(product.Name))
                 throw new ArgumentNullException(nameof(product.Name));
+
+            // Set Id and CreatedDate
+            product.Id = ObjectId.GenerateNewId().ToString();
+            product.CreatedDate = DateTime.UtcNow;
 
             await _inventoryContext.Products.InsertOneAsync(product);
             return true;
@@ -61,7 +66,7 @@ namespace EShop.Inventory.API.Repositories
 
         async Task<IEnumerable<Product>> IInventoryRepository.GetProductsByCategory(string categoryName, int page, int pageSize)
         {
-            var filterDefinition = Builders<Product>.Filter.Eq(x => x.Name, categoryName);
+            var filterDefinition = Builders<Product>.Filter.Eq(x => x.Category, categoryName);
             return await _inventoryContext
                             .Products
                             .Find(filterDefinition)

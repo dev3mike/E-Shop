@@ -5,6 +5,11 @@ namespace EShop.Inventory.API.Entities
 {
     public class BaseEntity
     {
+        public BaseEntity()
+        {
+            this.CreatedDate = DateTime.UtcNow;
+        }
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

@@ -1,4 +1,5 @@
-﻿using EShop.Inventory.API.Entities;
+﻿using EShop.Inventory.API.Data.Seeds;
+using EShop.Inventory.API.Entities;
 using MongoDB.Driver;
 
 namespace EShop.Inventory.API.Data
@@ -17,6 +18,8 @@ namespace EShop.Inventory.API.Data
             var database = client.GetDatabase(databaseName);
 
             Products = database.GetCollection<Product>(collectionName);
+
+            InventoryContextSeed.SeedData(Products);
         }
 
         private string GetValueFromConfiguration(IConfiguration configuration, string key)
