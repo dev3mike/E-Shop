@@ -16,7 +16,7 @@ namespace EShop.Inventory.API.Data.Seeds
 
         private static IEnumerable<Product> GetSampleProducts()
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), @"Seeds\SampleProducts.json");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), @"Seeds/SampleProducts.json");
 
             List<Product> products;
             using (StreamReader r = new StreamReader(path))

@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  eshop.inventory.database:
+    image: mongo
+
+  eshop.inventory.api:
+    image: ${DOCKER_REGISTRY-}eshopinventoryapi
+    build:
+      context: .
+      dockerfile: Services/Inventory/EShop.Inventory.API/Dockerfile
+
+volumes:
+  inventory_data:

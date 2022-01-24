@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  eshop.inventory.database:
+    container_name: eshop.inventory.database
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes: 
+      -  inventory_data:/data/db
+
+  eshop.inventory.api:
+    container_name: eshop.inventory.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://eshop.inventory.database:27017"
+    depends_on:
+      - eshop.inventory.database
+    ports:
+      - "10000:80"

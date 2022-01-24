@@ -85,7 +85,7 @@ namespace EShop.Inventory.API.Controller
                 : BadRequest();
         }
 
-        [HttpPut(Name = "DeleteProduct")]
+        [HttpDelete(Name = "DeleteProduct")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [Consumes(MediaTypeNames.Application.Json)]
