@@ -1,4 +1,4 @@
-﻿using Eshop.Libraries.Serializer;
+﻿using EShop.Libraries.Serializer;
 using EShop.Cart.API.Entities;
 using Microsoft.Extensions.Caching.Distributed;
 using System;

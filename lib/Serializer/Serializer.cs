@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Eshop.Libraries.Serializer
+namespace EShop.Libraries.Serializer
 {
     public class Serializer : ISerializer
     {

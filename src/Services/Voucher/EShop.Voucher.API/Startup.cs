@@ -1,5 +1,3 @@
-using EShop.Libraries.Serializer;
-using EShop.Cart.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EShop.Cart.API
+namespace EShop.Voucher.API
 {
     public class Startup
     {
@@ -27,22 +25,12 @@ namespace EShop.Cart.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddStackExchangeRedisCache(
-                options =>
-                {
-                    options.Configuration = Configuration.GetValue<string>("Redis:ConnectionString");
-                }
-                );
-
-            services.AddScoped<ICartRepository, CartRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EShop.Cart.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Eshop.Voucher.API", Version = "v1" });
             });
-
-            services.AddScoped<ISerializer, Serializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +40,7 @@ namespace EShop.Cart.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EShop.Cart.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Eshop.Voucher.API v1"));
             }
 
             app.UseRouting();

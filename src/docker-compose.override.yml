@@ -48,3 +48,15 @@ services:
     ports:
       - "10001:80"
 
+  # Voucher Microservice
+  eshop.voucher.database:
+    container_name: eshop.voucher.database
+    restart: always
+    environment:
+        - POSTGRES_USER=eshop_voucher_db_admin
+        - POSTGRES_PASSWORD=85136c79cbf9fe36bb9d05d0639c70c265c18d37
+        - POSTGRES_DB=eshop_voucher_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - voucher_data:/var/lib/postgresql/data/

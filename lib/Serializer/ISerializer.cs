@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eshop.Libraries.Serializer
+namespace EShop.Libraries.Serializer
 {
     public interface ISerializer
     {

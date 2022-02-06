@@ -25,6 +25,11 @@ services:
       context: .
       dockerfile: Services/Cart/EShop.Cart.API/Dockerfile
 
+  # Voucher Microservice
+  eshop.voucher.database:
+    image: postgres
+
 volumes:
   inventory_data:
   portainer_data:
+  voucher_data:
