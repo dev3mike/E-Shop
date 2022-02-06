@@ -1,4 +1,5 @@
 using Eshop.Libraries.Serializer;
+using EShop.Cart.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,8 @@ namespace EShop.Cart.API
                     options.Configuration = Configuration.GetValue<string>("Redis:ConnectionString");
                 }
                 );
+
+            services.AddScoped<ICartRepository, CartRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
