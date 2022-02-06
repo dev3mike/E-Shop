@@ -1,6 +1,10 @@
 version: '3.4'
 
 services:
+  # Portainer Dashboard
+  portainer:
+    image: portainer/portainer-ce
+
   # Inventory Microservice
   eshop.inventory.database:
     image: mongo
@@ -23,3 +27,4 @@ services:
 
 volumes:
   inventory_data:
+  portainer_data:

@@ -1,6 +1,17 @@
 version: '3.4'
 
 services:
+  # Portainer Dashboard
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes: 
+      -  /var/run/docker.sock:/var/run/docker.sock
+      -  portainer_data:/data
+
   # Inventory Microservice
   eshop.inventory.database:
     container_name: eshop.inventory.database
