@@ -60,3 +60,14 @@ services:
       - "5432:5432"
     volumes:
       - voucher_data:/var/lib/postgresql/data/
+
+  pgadmin:
+    container_name: pgadmin
+    restart: always
+    environment:
+        - PGADMIN_DEFAULT_EMAIL=eshop_voucher@eshop.com
+        - PGADMIN_DEFAULT_PASSWORD=85136c79cbf9fe36bb
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin

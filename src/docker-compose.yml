@@ -29,7 +29,11 @@ services:
   eshop.voucher.database:
     image: postgres
 
+  pgadmin:
+    image: dpage/pgadmin4
+
 volumes:
   inventory_data:
   portainer_data:
   voucher_data:
+  pgadmin_data:
