@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+  # Inventory Microservice
   eshop.inventory.database:
     image: mongo
 
@@ -9,6 +10,16 @@ services:
     build:
       context: .
       dockerfile: Services/Inventory/EShop.Inventory.API/Dockerfile
+
+  # Shopping Cart Microservice
+  eshop.cart.database:
+    image: redis:alpine
+
+  eshop.cart.api:
+    image: ${DOCKER_REGISTRY-}eshopcartapi
+    build:
+      context: .
+      dockerfile: Services/Cart/EShop.Cart.API/Dockerfile
 
 volumes:
   inventory_data:

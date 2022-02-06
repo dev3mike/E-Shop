@@ -1,6 +1,7 @@
 version: '3.4'
 
 services:
+  # Inventory Microservice
   eshop.inventory.database:
     container_name: eshop.inventory.database
     restart: always
@@ -18,3 +19,21 @@ services:
       - eshop.inventory.database
     ports:
       - "10000:80"
+
+  # Shopping Cart Microservice
+  eshop.cart.database:
+    container_name: eshop.cart.database
+    restart: always
+    ports:
+      - "6379:6379"
+
+  eshop.cart.api:
+    container_name: eshop.cart.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "Redis:ConnectionString=eshop.cart.database:6379"
+    depends_on:
+      - eshop.cart.database
+    ports:
+      - "10001:80"
+

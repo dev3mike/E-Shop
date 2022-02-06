@@ -43,8 +43,9 @@ namespace EShop.Cart.API.Controllers
             cart.UpdatedDate = DateTime.UtcNow;
 
             var updatedCart = await _cartRepository.UpdateCart(cart);
+            var updatedCartItems = updatedCart?.Items ?? new List<ShoppingCartItem>();
 
-            return Ok(updatedCart);
+            return Ok(updatedCartItems);
         }
 
         [HttpDelete("{userId}", Name = "DeleteUserCart")]
