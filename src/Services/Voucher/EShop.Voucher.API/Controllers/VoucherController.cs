@@ -3,6 +3,7 @@ using EShop.Voucher.API.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net.Mime;
 using System.Threading.Tasks;
 
 namespace EShop.Voucher.API.Controllers
@@ -18,12 +19,23 @@ namespace EShop.Voucher.API.Controllers
             _voucherRepository = voucherRepository;
         }
 
+        [HttpPut("{voucherCode}", Name = "GetVoucher")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<EVoucher> GetVoucher(string voucherCode)
         {
             var voucher = _voucherRepository.GetVoucher(voucherCode);
+
+            if (voucher == null)
+                return NotFound();
+
             return Ok(voucher);
         }
 
+        [HttpPost(Name = "CreateVoucher")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Consumes(MediaTypeNames.Application.Json)]
         public ActionResult<EVoucher> CreateVoucher(EVoucher eVoucher)
         {
             ValidateEVoucher(eVoucher);
@@ -35,6 +47,10 @@ namespace EShop.Voucher.API.Controllers
             return Ok(voucher);
         }
 
+        [HttpPut(Name = "UpdateVoucher")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Consumes(MediaTypeNames.Application.Json)]
         public ActionResult<EVoucher> UpdateVoucher(EVoucher eVoucher)
         {
             ValidateEVoucher(eVoucher);
@@ -43,6 +59,10 @@ namespace EShop.Voucher.API.Controllers
             return Ok(voucher);
         }
 
+        [HttpPost(Name = "DeleteVoucher")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Consumes(MediaTypeNames.Application.Json)]
         public ActionResult DeleteVoucher(string voucherCode)
         {
             var voucher = _voucherRepository.GetVoucher(voucherCode);
