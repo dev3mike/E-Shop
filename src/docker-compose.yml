@@ -32,6 +32,12 @@ services:
   pgadmin:
     image: dpage/pgadmin4
 
+  eshop.voucher.api:
+    image: ${DOCKER_REGISTRY-}eshopvoucherapi
+    build:
+      context: .
+      dockerfile: Services/Voucher/Eshop.Voucher.API/Dockerfile
+
 volumes:
   inventory_data:
   portainer_data:
