@@ -37,11 +37,11 @@ namespace EShop.Voucher.API.Extensions
 
                 // Drop tables
                 ExecuteCommand( command,
-                                query: "DROP TABLE IF EXISTS Vouchers");
+                                query: "DROP TABLE IF EXISTS Voucher");
 
                 // Create vouchers table
                 ExecuteCommand( command,
-                                query: "CREATE TABLE Vouchers (" +
+                                query: "CREATE TABLE Voucher (" +
                                             "Id SERIAL PRIMARY KEY," +
                                             "Code VARCHAR(24) NOT NULL," +
                                             "Amount INT," +
@@ -51,7 +51,7 @@ namespace EShop.Voucher.API.Extensions
 
                 // Insert sample vouchers
                 ExecuteCommand( command,
-                                query: "INSERT INTO Vouchers (Code, Amount, IsUsed) VALUES ('NEW_CUSTOMER', 20, false)");
+                                query: "INSERT INTO Voucher (Code, Amount, IsUsed) VALUES ('NEW_CUSTOMER', 20, false)");
 
 
                 logger.LogInformation("Postgresql: Migration done ✔");

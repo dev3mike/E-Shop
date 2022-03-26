@@ -19,7 +19,7 @@ namespace EShop.Voucher.API.Controllers
             _voucherRepository = voucherRepository;
         }
 
-        [HttpPut("{voucherCode}", Name = "GetVoucher")]
+        [HttpGet("{voucherCode}", Name = "GetVoucher")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<EVoucher> GetVoucher(string voucherCode)
@@ -59,10 +59,9 @@ namespace EShop.Voucher.API.Controllers
             return Ok(voucher);
         }
 
-        [HttpPost(Name = "DeleteVoucher")]
+        [HttpDelete("{voucherCode}", Name = "DeleteVoucher")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Consumes(MediaTypeNames.Application.Json)]
         public ActionResult DeleteVoucher(string voucherCode)
         {
             var voucher = _voucherRepository.GetVoucher(voucherCode);

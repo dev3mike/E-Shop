@@ -19,7 +19,7 @@ namespace EShop.Voucher.API.Repositories
 
         public EVoucher CreateVoucher(EVoucher eVoucher)
         {
-            var connection = GetPostgresConnection();
+            using var connection = GetPostgresConnection();
             var result = connection.Insert(eVoucher);
             eVoucher.Id = result;
             return eVoucher;
@@ -27,14 +27,14 @@ namespace EShop.Voucher.API.Repositories
 
         public bool DeleteVoucher(EVoucher eVoucher)
         {
-            var connection = GetPostgresConnection();
+            using var connection = GetPostgresConnection();
             var isSuccessful = connection.Delete(eVoucher);
             return isSuccessful;
         }
 
         public EVoucher GetVoucher(string voucherCode)
         {
-            var connection = GetPostgresConnection();
+            using var connection = GetPostgresConnection();
             var voucher = connection.QueryFirstOrDefault<EVoucher>(
                 sql: "SELECT * FROM Voucher WHERE Code=@VoucherCode", 
                 param: new { VoucherCode = voucherCode});
@@ -43,14 +43,14 @@ namespace EShop.Voucher.API.Repositories
 
         public EVoucher UpdateVoucher(EVoucher eVoucher)
         {
-            var connection = GetPostgresConnection();
+            using var connection = GetPostgresConnection();
             var isSuccessful = connection.Update(eVoucher);
             return isSuccessful ? eVoucher : null;
         }
 
         private NpgsqlConnection GetPostgresConnection()
         {
-            using var connection = new NpgsqlConnection(
+            var connection = new NpgsqlConnection(
                 _configuration.GetValue<string>("DatabaseSettings:ConnectionString")
                 );
             return connection;

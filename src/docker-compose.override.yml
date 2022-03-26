@@ -65,7 +65,7 @@ services:
     container_name: eshop.voucher.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=Server=eshop.voucher.database;Port=5432;Database=eshop_voucher_db;User Id=eshop_voucher_db_admin;Password=85136c79cbf9fe36bb9d05d0639c70c265c18d37;"
+      - DatabaseSettings__ConnectionString=Server=eshop.voucher.database;Port=5432;Database=eshop_voucher_db;User Id=eshop_voucher_db_admin;Password=85136c79cbf9fe36bb9d05d0639c70c265c18d37
     depends_on:
       - eshop.voucher.database
     ports:
