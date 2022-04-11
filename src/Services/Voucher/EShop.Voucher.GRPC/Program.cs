@@ -1,7 +1,8 @@
+using EShop.Voucher.GRPC.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace EShop.Voucher.API
+namespace EShop.Voucher.GRPC
 {
     public class Program
     {
@@ -9,9 +10,12 @@ namespace EShop.Voucher.API
         {
             CreateHostBuilder(args)
                 .Build()
+                .MigrateDatabase<Program>()
                 .Run();
         }
 
+        // Additional configuration is required to successfully run gRPC on macOS.
+        // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
