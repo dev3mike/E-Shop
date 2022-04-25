@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "EShop.Voucher.GRPC.Protos";
+
+service VoucherProtoService {
+	rpc GetVoucher(GetVoucherRequest) returns (VoucherModel);
+	rpc CreateVoucher(CUDVoucherRequest) returns (VoucherModel);
+	rpc UpdateVoucher(CUDVoucherRequest) returns (VoucherModel);
+	rpc DeleteVoucher(CUDVoucherRequest) returns (DeleteVoucherResponse);
+}
+
+message GetVoucherRequest {
+	string voucherCode = 1;
+}
+message CUDVoucherRequest {
+	VoucherModel voucherModel = 1;
+}
+message DeleteVoucherResponse {
+	bool success = 1;
+}
+
+message VoucherModel {
+	int64 Id = 1;
+    string Code = 2;
+    int32 Amount = 3;
+    bool IsUsed = 4;
+    google.protobuf.Timestamp UsedDate = 5;
+}

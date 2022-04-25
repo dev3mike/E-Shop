@@ -1,4 +1,5 @@
 ﻿using EShop.Voucher.GRPC.Repositories;
+using EShop.Voucher.GRPC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,6 +16,7 @@ namespace EShop.Voucher.GRPC
         {
             services.AddScoped<IVoucherRepository, VoucherRepository>();
             services.AddGrpc();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -29,7 +31,7 @@ namespace EShop.Voucher.GRPC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<EVoucherService>();
 
                 endpoints.MapGet("/", async context =>
                 {

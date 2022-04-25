@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Voucher", "Voucher", "{B5BD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.Voucher.API", "Services\Voucher\Eshop.Voucher.API\EShop.Voucher.API.csproj", "{BFA7640C-9439-461E-B8BC-AE6C685509B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EShop.Voucher.GRPC", "Services\Voucher\EShop.Voucher.GRPC\EShop.Voucher.GRPC.csproj", "{3509D7CC-3FB5-4BD8-BE91-29797795E1B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShop.Voucher.GRPC", "Services\Voucher\EShop.Voucher.GRPC\EShop.Voucher.GRPC.csproj", "{3509D7CC-3FB5-4BD8-BE91-29797795E1B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
