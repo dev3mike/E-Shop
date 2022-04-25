@@ -38,8 +38,15 @@ services:
       context: .
       dockerfile: Services/Voucher/Eshop.Voucher.API/Dockerfile
 
+  eshop.voucher.grpc:
+    image: ${DOCKER_REGISTRY-}eshopvouchergrpc
+    build:
+      context: .
+      dockerfile: Services/Voucher/EShop.Voucher.GRPC/Dockerfile
+
 volumes:
   inventory_data:
   portainer_data:
   voucher_data:
   pgadmin_data:
+

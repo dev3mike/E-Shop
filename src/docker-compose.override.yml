@@ -65,11 +65,22 @@ services:
     container_name: eshop.voucher.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - GRPCSettings__VoucherGRPCServiceURL=http://eshop.voucher.grpc
+    depends_on:
+      - eshop.voucher.grpc
+    ports:
+      - "10002:80"
+
+  eshop.voucher.grpc:
+    container_name: eshop.voucher.grpc
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
       - DatabaseSettings__ConnectionString=Server=eshop.voucher.database;Port=5432;Database=eshop_voucher_db;User Id=eshop_voucher_db_admin;Password=85136c79cbf9fe36bb9d05d0639c70c265c18d37
     depends_on:
       - eshop.voucher.database
     ports:
-      - "10002:80"
+      - "10003:80"
+
 
   pgadmin:
     container_name: pgadmin
@@ -81,3 +92,4 @@ services:
       - "5050:80"
     volumes:
       - pgadmin_data:/root/.pgadmin
+

@@ -1,16 +1,12 @@
 using EShop.Voucher.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using static EShop.Voucher.GRPC.Protos.VoucherProtoService;
 
 namespace EShop.Voucher.API
 {
@@ -27,6 +23,11 @@ namespace EShop.Voucher.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IVoucherRepository, VoucherRepository>();
+
+            var grpcServiceURL = Configuration["GRPCSettings:VoucherGRPCServiceURL"];
+            services.AddGrpcClient<VoucherProtoServiceClient>(options => options.Address = new Uri(grpcServiceURL));
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
